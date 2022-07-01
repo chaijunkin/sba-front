@@ -1,3 +1,7 @@
+# docker build -f Dockerfile-nginx -t smartbank-frontend-module:nginx .
+# docker tag smartbank-frontend-module:nginx jkplayground/smartbank-frontend-module:nginx-v1.0.0
+# docker push jkplayground/smartbank-frontend-module:nginx-v1.0.0
+
 ### STAGE 1: Build ###
 FROM node:alpine AS build
 
@@ -12,3 +16,4 @@ FROM nginx:stable-alpine
 COPY nginx-multi.conf /etc/nginx/nginx.conf
 COPY --from=build /app/build /usr/share/nginx/html
 
+EXPOSE 80
